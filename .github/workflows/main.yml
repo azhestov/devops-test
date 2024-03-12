@@ -30,11 +30,13 @@ jobs:
     - name: Pack DevopsTest
       run: |
         "%UE_ROOT%\Engine\Build\BatchFiles\RunUAT.bat" BuildCookRun -project=%cd%\DevopsTest.uproject -noP4 -platform=Win64 -clientconfig=Development -build -cook -stage -pak -archive -archivedirectory="$(Build.StagingDirectory)"
+    - name: set path
+      run: set ART_PATH=%cd%\Saved\StagedBuilds\Windows\
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
       with:
         name: compressed-DevopsTestEditor
-        path: d:\work\VS\devops-test\Saved\StagedBuilds\Windows\
+        path: "%ART_PATH%"
         compression-level: 9
         overwrite: true
         retention-days: 5
