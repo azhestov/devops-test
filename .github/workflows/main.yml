@@ -38,7 +38,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: compressed-DevopsTestEditor
-        path: "$(Build.StagingDirectory)"
+        path: "d:\\work\\VS\\devops-test\\$(Build.StagingDirectory)"
         compression-level: 9
         overwrite: true
         retention-days: 5
