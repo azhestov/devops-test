@@ -34,12 +34,6 @@ jobs:
     - name: Pack DevopsTest
       run: |
         "%UE_ROOT%\Engine\Build\BatchFiles\RunUAT.bat" BuildCookRun -project=%cd%\DevopsTest.uproject -noP4 -platform=Win64 -clientconfig=Development -build -cook -stage -pak -archive -archivedirectory="$(Build.StagingDirectory)"
-
-  compress-artifact:
-    needs: package
-    runs-on: self-hosted
-    if: ${{ github.event.schedule }}
-    steps:
     - name: Compress
       run: |
         7z a -tzip DevopsTestEditor.zip "$(Build.StagingDirectory)"
