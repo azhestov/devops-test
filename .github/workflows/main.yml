@@ -38,7 +38,8 @@ jobs:
       run: |
         7z a -tzip DevopsTestEditor.zip "$(Build.StagingDirectory)"
     - name: Upload Artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: compressed-DevopsTestEditor
         path: DevopsTestEditor.zip
+        retention-days: 5
