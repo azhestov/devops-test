@@ -1,0 +1,25 @@
+# Compile libraries on each main push
+# Nightly packaging project
+# [Upload artifacts]
+name: Test workflow
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '*/15 * * * *'
+
+defaults:
+  run:
+    shell: cmd
+  
+jobs:
+  build:
+    runs-on: self-hosted
+    if: ${{ !github.event.schedule }}
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Compiling DevopsTestEditor Libraries
+      run: |
+        "%UE_ROOT%\Engine\Build\BatchFiles\Build.bat" DevopsTestEditor Win64 Development -project=%cd%\DevopsTest.uproject
