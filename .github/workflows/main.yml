@@ -23,3 +23,14 @@ jobs:
     - name: Compiling DevopsTestEditor Libraries
       run: |
         "%UE_ROOT%\Engine\Build\BatchFiles\Build.bat" DevopsTestEditor Win64 Development -project=%cd%\DevopsTest.uproject
+
+  package:
+    runs-on: self-hosted
+    if: ${{ github.event_name == 'schedule' }}
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Pack DevopsTest
+      run: |
+        "%UE_ROOT%\Engine\Build\BatchFiles\RunUAT.bat" BuildCookRun -project=%cd%\DevopsTest.uproject -noP4 -platform=Win64 -clientconfig=Development -build -cook -stage -pak -archive -archivedirectory="$(Build.StagingDirectory)"
+
