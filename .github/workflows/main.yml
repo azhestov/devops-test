@@ -34,7 +34,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: compressed-DevopsTestEditor
-        path: "%cd%\\Saved\\StagedBuilds\\Windows\\"
+        path: d:\work\VS\devops-test\Saved\StagedBuilds\Windows\
         compression-level: 9
         overwrite: true
         retention-days: 5
