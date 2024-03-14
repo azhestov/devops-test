@@ -3,11 +3,11 @@
 # [Upload artifacts]
 name: Test workflow
 on:
-  push:
-    branches:
-      - main
-  schedule:
-    - cron: '42 4 * * *'
+#   push:
+#     branches:
+#       - main
+#   schedule:
+#     - cron: '42 4 * * *'
 
 defaults:
   run:
